@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/livergara/jfd-project/issues"
   },
-  "homepage": "https://github.com/livergara/jfd-project#readme"
+  "homepage": "https://github.com/livergara/jfd-project#readme",
+  "dependencies": {
+    "eslint": "^9.3.0",
+    "nodemon": "^3.1.0"
+  }
 }
