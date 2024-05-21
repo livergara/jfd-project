@@ -1,0 +1,101 @@
+@import './variables.scss';
+@import './elements';
+@import './fonts.scss';
+@import './layout.scss';
+@import './animation.scss';
+
+*{
+    box-sizing: border-box;
+}
+
+html{
+    background-color: black;
+    font-family: 'Bitter', serif;
+    height: 100%;
+}
+
+header{
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+main {
+    margin-top: 46px;
+}
+
+a, p {
+    color: $gray;
+    font-size: 15px;
+    font-weight: 200;
+    letter-spacing: 4.8px;
+    margin: 0;
+    text-decoration: none;
+}
+
+h1{
+    color: $gray;
+    font-size: 36px;
+    font-weight: 200;
+    letter-spacing: 10px;
+    margin: 0;
+}
+
+label{
+    color: $gray;
+    display: block;
+    font-size: 16px;
+    letter-spacing: 4.8px;
+    padding-bottom: 10px;
+}
+
+#app{
+    height: 100%;
+}
+
+.resource-control-app{
+    background: linear-gradient(45deg, rgba(0,0,0,1) 0%, rgba(0,0,0,1) 70%, rgba(41,41,41,1) 100%);
+}
+
+@media (min-width: 375px) {
+    .resource-control-app{
+        padding: 15px 15px;
+    }
+}
+
+@media (min-width: 768px) {
+    .resource-control-app{
+        padding: 28px 80px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .resource-control-app{
+        padding: 28px 80px;
+    }
+}
+
+@media (min-width: 1280px) {
+    .resource-control-app{
+        padding: 28px 80px;
+    }
+}
+
+@media (min-width: 1440px) {
+    .resource-control-app{
+        padding: 28px 80px;
+    }
+}
+
+@media (min-width: 1920px) {
+    .resource-control-app{
+        padding: 28px 88px;
+    }
+}
