@@ -152,3 +152,29 @@ input{
         outline: none;
     }
 }
+
+
+@media (max-width: 768px) {
+
+}
+
+@media (min-width: 768px) {
+
+}
+
+@media (min-width: 1024px) {
+
+}
+
+@media (min-width: 1280px) {
+
+}
+
+@media (min-width: 1440px) {
+}
+
+@media (min-width: 1920px) {
+    .register__page .auth__block {
+        margin-top: 9%;
+    }
+}

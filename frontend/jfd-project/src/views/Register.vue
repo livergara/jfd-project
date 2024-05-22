@@ -39,7 +39,6 @@ export default defineComponent({
                </div>
             </div>
          </div>
-         <div class="register__page_animation"></div>
    </div>
 </template>
 
