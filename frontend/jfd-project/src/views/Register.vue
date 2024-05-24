@@ -19,6 +19,7 @@ export default defineComponent({
                password: this.password
             })
          } catch (error) {
+            //   @ts-ignore
             this.error = error.response.data.error
          }
       }
