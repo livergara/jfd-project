@@ -6,6 +6,11 @@ export default {
     name: 'Dashboard',
     components: {
         NavMenu
+    },
+    data () {
+        return {
+            title: 'Дашборд'
+        }
     }
 }
 
@@ -20,7 +25,7 @@ export default {
             </div>
         </header>
         <main>
-            <h1>Дашбоард</h1>
+            <h1>{{ title }}</h1>
         </main>
     </div>
 </template>

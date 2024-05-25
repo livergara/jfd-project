@@ -6,6 +6,11 @@ export default {
     name: 'ProjectsRegistry',
     components: {
         NavMenu
+    },
+    data () {
+        return {
+            title: 'Реестр проектов'
+        }
     }
 }
 
@@ -20,7 +25,7 @@ export default {
             </div>
         </header>
         <main>
-            <h1>Реестр проектов</h1>
+            <h1>{{ title }}</h1>
         </main>
     </div>
 </template>

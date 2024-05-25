@@ -6,6 +6,11 @@ export default {
     name: 'CalendarResourcePlan',
     components: {
         NavMenu
+    },
+    data () {
+        return {
+            title: 'Календарно-ресурсный план'
+        }
     }
 }
 
@@ -21,7 +26,7 @@ export default {
             </div>
         </header>
         <main>
-            <h1>Календарно-ресурсный план</h1>
+            <h1>{{ title }}</h1>
         </main>
     </div>
 </template>

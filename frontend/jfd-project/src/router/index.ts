@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import Register from '@/views/Register.vue'
 import Login from '@/views/Login.vue'
 import ResourceRegistry from '@/views/ResourceRegistry.vue'
+import CreateResource from '@/views/CreateResource.vue'
 import ProjectsRegistry from '@/views/ProjectsRegistry.vue'
 import CalendarResourcePlan from '@/views/CalendarResourcePlan.vue'
 import RequestJournal from '@/views/RequestJournal.vue'
@@ -24,6 +25,11 @@ const router = createRouter({
       path: '/resource-registry',
       name: 'resource-registry',
       component: ResourceRegistry
+    },
+    {
+      path: '/resource-registry/create',
+      name: 'resource-registry-create',
+      component: CreateResource
     },
     {
       path: '/projects-registry',

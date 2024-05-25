@@ -31,7 +31,7 @@ export default defineComponent({
    <div class="register__page">
       <div class="auth__block">
          <div class="auth__block_row">
-            <h1>Пожалуйста, авторизуйтесь</h1>
+            <h1>Создайте аккаунт</h1>
             <input type="email" 
             name="email" 
             v-model="email" 
@@ -129,6 +129,10 @@ input {
 @media (min-width: 1920px) {
     .register__page .auth__block {
         margin-top: 8%;
+    }
+
+    .auth__block {
+        min-width: 1340px;
     }
 }
 </style>

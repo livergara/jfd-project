@@ -6,6 +6,11 @@ export default {
     name: 'RequestJournal',
     components: {
         NavMenu
+    },
+    data () {
+        return {
+            title: 'Журнал заявок'
+        }
     }
 }
 
@@ -20,7 +25,7 @@ export default {
             </div>
         </header>
         <main>
-            <h1>Журнал заявок</h1>
+            <h1>{{ title }}</h1>
         </main>
     </div>
 </template>
