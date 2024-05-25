@@ -57,7 +57,7 @@ export default defineComponent({
    </div>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 h1 {
    margin-bottom: 3rem;
    text-transform: uppercase;
