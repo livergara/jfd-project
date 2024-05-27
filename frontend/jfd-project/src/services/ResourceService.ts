@@ -9,5 +9,8 @@ export default {
     },
     post (resource) {
         return Api().post('resources', resource)
+    },
+    put (resource) {
+        return Api().put(`resources/${resource.id}`, resource)
     }
 }

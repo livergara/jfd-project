@@ -4,6 +4,7 @@ import Login from '@/views/Login.vue'
 import ResourceRegistry from '@/views/ResourceRegistry.vue'
 import CreateResource from '@/views/CreateResource.vue'
 import ViewResource from '@/views/ViewResource.vue'
+import EditResource from '@/views/EditResource.vue'
 import ProjectsRegistry from '@/views/ProjectsRegistry.vue'
 import CalendarResourcePlan from '@/views/CalendarResourcePlan.vue'
 import RequestJournal from '@/views/RequestJournal.vue'
@@ -36,6 +37,11 @@ const router = createRouter({
       path: '/resource-registry/:resourceId',
       name: 'resource-view',
       component: ViewResource
+    },
+    {
+      path: '/resource-registry/:resourceId/edit',
+      name: 'resource-edit',
+      component: EditResource
     },
     {
       path: '/projects-registry',

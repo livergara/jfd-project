@@ -63,7 +63,13 @@ export default defineComponent({
                                 params: {
                                     resourceId: resource.id
                                 }
-                            })">View</button></td>
+                            })">View</button>
+                            <button @click="navigateTo({
+                                name: 'resource-edit',
+                                params: {
+                                    resourceId: resource.id
+                                }
+                            })">Edit</button></td>
                             <td> {{ resource.fio }}</td>
                             <td> {{ resource.email }}</td>
                             <td> {{ resource.position }}</td>
