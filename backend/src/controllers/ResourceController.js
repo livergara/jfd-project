@@ -13,6 +13,16 @@ module.exports = {
             })
         }
     },
+    async show (req, res) {
+        try {
+          const resource = await Resource.findByPk(req.params.resourceId)
+          res.send(resource)
+        } catch (err) {
+          res.status(500).send({
+            error: 'an error has occured trying to show the songs'
+          })
+        }
+      },
     async post (req, res) {
         try {
             const resource = await Resource.create(req.body)

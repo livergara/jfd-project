@@ -62,27 +62,27 @@ export default defineComponent(
                 <h1>Создание карточки ресурса</h1>
                 <div class="resource-registry__card">
                     <div class="row">
-                        <div class="resource-registry__card__input-block">
+                        <div class="input-block">
                             <label for="fio">ФИО сотрудника</label>
                             <input id="fio" v-model="resource.fio"/>
                         </div>
-                        <div class="resource-registry__card__input-block">
+                        <div class="input-block">
                             <label for="personnelNumber">Табельный номер</label>
                             <input id="personnelNumber" v-model="resource.personnelNumber"/>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="resource-registry__card__input-block">
+                        <div class="input-block">
                             <label for="email">Почта</label>
                             <input id="email" v-model="resource.email" />
                         </div>
-                        <div class="resource-registry__card__input-block">
+                        <div class="input-block">
                             <label for="position">Должность</label>
                             <input id="position" v-model="resource.position" />
                         </div>
                     </div>
                     <div class="row">
-                        <div class="resource-registry__card__input-block-100">
+                        <div class="input-block-100">
                             <label for="role">Роль</label>
                             <input id="role" v-model="resource.role" />
                         </div>
@@ -92,13 +92,13 @@ export default defineComponent(
                             <label for="busyness">Процент занятости</label>
                             <input id="busyness" v-model="resource.busyness" />
                         </div>
-                        <div class="resource-registry__card__input-block">
+                        <div class="input-block">
                             <label for="resourceOwner">Владелец ресурса</label>
                             <input id="resourceOwner" v-model="resource.resourceOwner" />
                         </div>
                     </div>
                     <div class="row">
-                        <div class="resource-registry__card__input-block-100">
+                        <div class="input-block-100">
                             <label for="projects">Проекты</label>
                             <input id="projects" v-model="resource.projects" />
                         </div>
@@ -110,7 +110,19 @@ export default defineComponent(
     </div>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
+.resource-registry__card{
+    width: 70%;
+    
+    .input-block-100{
+        width: 100%;
+    }
+
+    .input-block {
+        width: 50%;
+    }
+}
+
 .button-default {
     margin-top: 2rem;
 }

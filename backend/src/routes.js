@@ -12,6 +12,8 @@ module.exports = (app) => {
 
     app.get('/resources',
         ResourceController.index)
+    app.get('/resources/:resourceId',
+    ResourceController.show)
     app.post('/resources',
         ResourceController.post)
 

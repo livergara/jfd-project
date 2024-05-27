@@ -15,6 +15,11 @@ export default defineComponent({
             resources: null
         }
     },
+    methods: {
+        navigateTo (route) {
+            this.$router.push(route)
+        }
+    },
     async mounted() {
         // backend request
         this.resources = (await ResourceService.index()).data
@@ -42,7 +47,7 @@ export default defineComponent({
                 <table>
                     <thead>
                         <tr>
-                            <th>@</th>
+                            <th> </th>
                             <th>ФИО</th>
                             <th>Почта</th>
                             <th>Должность</th>
@@ -53,7 +58,12 @@ export default defineComponent({
                     </thead>
                     <tbody>
                         <tr v-for="resource in resources" :key="resource.id">
-                            <td>-</td>
+                            <td><button @click="navigateTo({
+                                name: 'resource-view',
+                                params: {
+                                    resourceId: resource.id
+                                }
+                            })">View</button></td>
                             <td> {{ resource.fio }}</td>
                             <td> {{ resource.email }}</td>
                             <td> {{ resource.position }}</td>

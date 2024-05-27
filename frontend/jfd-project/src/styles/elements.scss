@@ -125,6 +125,23 @@
     }
 }
 
+.button-cancel{
+    background: $glass-white-05;
+    border: 1px solid $gray;
+    border-radius: 5px;
+    color: $gray;
+    cursor: pointer;
+    font-size: 15px;
+    height: 45px;
+    letter-spacing: 4.8px;
+    padding: 13px 40px;
+    text-transform: uppercase;
+
+    &:hover {
+        background: $glass-white-05;
+    }
+}
+
 // Таблица и ее элементы
 
 table {
@@ -175,6 +192,10 @@ input{
     }
 }
 
+input:-internal-autofill-selected{
+    background-color: $glass-white-05 !important;
+}
+
 
 @media (max-width: 768px) {
 
@@ -193,6 +214,11 @@ input{
 }
 
 @media (min-width: 1440px) {
+    .resource-registry__card__input-block{
+        margin-bottom: 2rem;
+        margin-right: 2rem;
+    }
+
 }
 
 @media (min-width: 1920px) {
