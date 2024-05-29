@@ -1,38 +1,29 @@
 const { Assignment, Resource, Project } = require('../models')
 
 module.exports = {
-    async getAssignmentDetails (req, res) {
+    async getAssignmentDetails(req, res) {
         try {
-            console.log(req.params)
             const assignments = await Assignment.findAll({
                 where: {
                     ResourceId: req.query.resourceId,
                     ProjectId: req.query.projectId
                 },
-                include: [
-                    {
-                        model: Resource,
-                        attributes: ['fio']
-                    },
-                    {
-                        model: Project,
-                        attributes: ['name', 'startDate', 'endDate', 'manager'] 
-                    }
-                ]
             });
-            // return assignments.map(assignment => {
-            //     return{
-            //         fio: assignment.Resource.fio,
-            //         name: assignment.Project.name,
-            //         startDate: assignment.Project.startDate,
-            //         endDate: assignment.endDate,
-            //         manager: assignment.Project.manager
-            //     }
-            // })
+            const project = await Project.findByPk(req.query.projectId)
+            const resource = await Resource.findByPk(req.query.resourceId)
+            console.log(assignments, project, resource)
+            const assignmentResult = {
+                fio: resource.fio,
+                    name: project.name,
+                    startDate: project.startDate,
+                    endDate: project.endDate,
+                    manager: project.manager
+            }
             res.status(200).send({
-                data: assignments
+                data: assignmentResult
             })
         } catch (err) {
+            console.log(err)
             res.status(500).send({
                 error: 'Возникла ошибка при загрузке проекта'
             })

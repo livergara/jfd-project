@@ -40,7 +40,7 @@ export default defineComponent({
                 </router-link>
             </div>
             <div class="page-main__component">
-                <h1>{{ assignments.name }}</h1>
+                <h1>{{ assignment.fio }}</h1>
             </div>
         </main>
     </div>
