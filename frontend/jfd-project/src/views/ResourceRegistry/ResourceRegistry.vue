@@ -12,11 +12,12 @@ export default defineComponent({
     data() {
         return {
             title: 'Матрица компетенций',
-            resources: null,
+            resources: null as null | {id: number; fio: string; email: string, position: string; role: string; busyness: string; projects: string[]}[],
             showDotMenu: false
         }
     },
     methods: {
+        // @ts-ignore
         navigateTo(route) {
             this.$router.push(route)
         },
@@ -35,7 +36,7 @@ export default defineComponent({
 <template>
     <div class="resource-registry__page">
         <header>
-            <img class="logo" src="../assets/img/rc-logo-1920w.svg" alt="Управление загрузкой ресурсов">
+            <img class="logo" src="../../assets/img/rc-logo-1920w.svg" alt="Управление загрузкой ресурсов">
             <div class="header-content__nav">
                 <nav-menu></nav-menu>
             </div>
@@ -65,7 +66,7 @@ export default defineComponent({
                             <td>
                                 <div class="dot-menu__block">
                                     <div @click="showDotsMenu()" class="dot-menu-icon">
-                                        <img src="../assets/icons/dots-menu.svg" alt="">
+                                        <img src="../../assets/icons/dots-menu.svg" alt="">
                                     </div>
                                     <!-- @vue-ignore -->
                                     <div class="dot-menu" :class="this.showDotMenu ? 'open-menu' : 'closed-menu'">
@@ -77,7 +78,7 @@ export default defineComponent({
                                                 }
                                             })">
                                                 <div class="row">
-                                                    <img src="../assets/icons/viewing.svg" alt="">
+                                                    <img src="../../assets/icons/viewing.svg" alt="">
                                                     <p>Просмотр карточки</p>
                                                 </div>
                                             </button>
@@ -88,7 +89,7 @@ export default defineComponent({
                                                 }
                                             })">
                                                 <div class="row">
-                                                    <img src="../assets/icons/editing.svg" alt="">
+                                                    <img src="../../assets/icons/editing.svg" alt="">
                                                     <p>Изменение карточки</p>
                                                 </div>
                                             </button>
@@ -96,7 +97,7 @@ export default defineComponent({
                                     </div>
                                 </div>
                             </td>
-                            <td> {{ resource.fio }}</td>
+                            <td> {{ resource.fio}}</td>
                             <td> {{ resource.email }}</td>
                             <td> {{ resource.position }}</td>
                             <td> {{ resource.role }}</td>

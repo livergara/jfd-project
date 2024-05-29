@@ -1,16 +1,10 @@
 const { Resource } = require('../models')
-// const { Project } = require('../models')
-// const { Assignment } = require('../models')
 
 module.exports = {
     async index(req, res) {
         try {
             const resources = await Resource.findAll({
-                where: {},
-                // include: {
-                //     model: Assignment,
-                //     include: [Project]
-                // }
+                where: {}
             })
             res.send(resources)
         } catch (err) {

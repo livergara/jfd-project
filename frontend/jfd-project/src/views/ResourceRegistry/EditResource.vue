@@ -49,7 +49,7 @@ export default {
 <template>
     <div class="resource-registry__page">
         <header>
-            <img class="logo" src="../assets/img/rc-logo-1920w.svg" alt="Управление загрузкой ресурсов">
+            <img class="logo" src="../../assets/img/rc-logo-1920w.svg" alt="Управление загрузкой ресурсов">
             <div class="header-content__nav">
                 <nav-menu></nav-menu>
             </div>

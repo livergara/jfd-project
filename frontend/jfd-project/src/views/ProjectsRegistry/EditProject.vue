@@ -1,55 +1,62 @@
 <script lang="ts">
-import { defineComponent } from 'vue';
-import NavMenu from '@/components/NavigationMenu/NavMenu.vue';
+import NavMenu from '@/components/NavigationMenu/NavMenu.vue'
 import ProjectsService from '@/services/ProjectsService';
-export default defineComponent(
-    {
-        name: 'CreateProject',
-        components: {
-            NavMenu
-        },
-        data() {
-            return {
-                project: {
-                    name: null,
-                    projectCode: null,
-                    description: null,
-                    manager: null,
-                    managerContacts: null,
-                    startDate: null,
-                    endDate: null,
-                    members: null
-                }
-            }
-        },
-        methods: {
-            async create() {
-                try {
-                    await ProjectsService.post(this.project)
-                    this.$router.push({
-                        name: 'projects-registry'
-                    })
-                } catch (err) {
-                    console.log(err)
-                }
+export default {
+    components: {
+        NavMenu
+    },
+    data() {
+        return {
+            project: {
+                name: null,
+                projectCode: null,
+                description: null,
+                manager: null,
+                managerContacts: null,
+                startDate: null,
+                endDate: null,
+                members: null
             }
         }
+    },
+    methods: {
+        async save() {
+            const projectId = this.$route.params.projectId
+            try {
+                await ProjectsService.put(this.project)
+                this.$router.push({
+                    name: 'project-view',
+                    params: {
+                        projectId: projectId
+                    }
+                })
+            } catch (err) {
+                console.log(err)
+            }
+        }
+    },
+    async mounted() {
+        try {
+            const projectId = this.$route.params.projectId
+            this.project = (await ProjectsService.show(projectId)).data
+        } catch (err) {
+            console.log(err)
+        }
     }
-)
-
+}
 </script>
 
 <template>
     <div class="projects-registry__page">
         <header>
-            <img class="logo" src="../assets/img/rc-logo-1920w.svg" alt="Управление загрузкой ресурсов">
+            <img class="logo" src="../../assets/img/rc-logo-1920w.svg" alt="Управление загрузкой ресурсов">
             <div class="header-content__nav">
                 <nav-menu></nav-menu>
             </div>
         </header>
         <main>
             <div class="page-main__component page-main__card-component">
-                <h1>Создание карточки проекта</h1>
+                <h1>Создание карточки ресурса</h1>
                 <div class="projects-registry__card">
                     <div class="row">
                         <div class="input-block">
@@ -95,7 +102,7 @@ export default defineComponent(
                     </div>
                     <div class="button-block">
                         <div class="row">
-                            <button class="button-default" @click="create">Создать</button>
+                            <button class="button-default" @click="save">Сохранить</button>
                         </div>
                     </div>
                 </div>

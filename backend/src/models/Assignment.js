@@ -1,8 +1,11 @@
-module.exports = (sequelize, DataTypes) => {
-    const Assignment = sequelize.define('Assignment', {
-        resourceId: DataTypes.INTEGER,
-        projectId: DataTypes.INTEGER,
-    })
 
+module.exports = (sequelize, DataTypes) => {
+    const Assignment = sequelize.define(
+        'Assignment',
+        { 
+            timestamps: false },
+    );
+ 
     return Assignment
 }
+

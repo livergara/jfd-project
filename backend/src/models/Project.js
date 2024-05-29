@@ -10,5 +10,8 @@ module.exports = (sequelize, DataTypes) => {
         members: DataTypes.STRING,
     })
 
+    Project.associate = function (models) {
+    }
+
     return Project
 }

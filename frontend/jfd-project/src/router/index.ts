@@ -1,17 +1,18 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import Register from '@/views/Register.vue'
 import Login from '@/views/Login.vue'
-import ResourceRegistry from '@/views/ResourceRegistry.vue'
-import CreateResource from '@/views/CreateResource.vue'
-import ViewResource from '@/views/ViewResource.vue'
-import EditResource from '@/views/EditResource.vue'
-import ProjectsRegistry from '@/views/ProjectsRegistry.vue'
-import CreateProject from '@/views/CreateProject.vue'
-import ViewProject from '@/views/ViewProject.vue'
-import EditProject from '@/views/EditProject.vue'
+import ResourceRegistry from '@/views/ResourceRegistry/ResourceRegistry.vue'
+import CreateResource from '@/views/ResourceRegistry/CreateResource.vue'
+import ViewResource from '@/views/ResourceRegistry/ViewResource.vue'
+import EditResource from '@/views/ResourceRegistry/EditResource.vue'
+import ProjectsRegistry from '@/views/ProjectsRegistry/ProjectsRegistry.vue'
+import CreateProject from '@/views/ProjectsRegistry/CreateProject.vue'
+import ViewProject from '@/views/ProjectsRegistry/ViewProject.vue'
+import EditProject from '@/views/ProjectsRegistry/EditProject.vue'
 import CalendarResourcePlan from '@/views/CalendarResourcePlan.vue'
 import RequestJournal from '@/views/RequestJournal.vue'
 import Dashboard from '@/views/Dashboard.vue'
+import AssignmentsRegistry from '@/views/AssignmentsRegistry/AssignmentsRegistry.vue'
 
 
 const router = createRouter({
@@ -66,6 +67,11 @@ const router = createRouter({
       path: '/projects-registry/:projectId/edit',
       name: 'project-edit',
       component: EditProject
+    },
+    {
+      path: '/assignments-registry',
+      name: 'assignments-registry',
+      component: AssignmentsRegistry
     },
     {
       path: '/calendar-resource-plan',
