@@ -83,6 +83,10 @@
             list-style-type: none;
         }
     }
+    
+    .burger-menu-icon {
+        cursor: pointer;
+    }
 }
 
 .responsive-nav-menu {
@@ -167,7 +171,12 @@ table {
         font-size: 14px;
         letter-spacing: 4.8px;
 
+        td:first-child{
+            padding: 23px 15px 15px 15px;
+        }
+
         td {
+            line-height: 1.5rem;
             padding: 20px 35px 20px 0px;
         }
     }

@@ -1,24 +1,24 @@
 <script lang="ts">
 import NavMenu from '@/components/NavigationMenu/NavMenu.vue'
-import ResourceService from '@/services/ResourceService';
+import ProjectsService from '@/services/ProjectsService';
 export default {
     components: {
         NavMenu
     },
     data() {
         return {
-            resource: {}
+            project: {}
         }
     },
     async mounted() {
-        const resourceId = this.$route.params.resourceId
-        this.resource = (await ResourceService.show(resourceId)).data
+        const projectId = this.$route.params.projectId
+        this.project = (await ProjectsService.show(projectId)).data
     },
 }
 </script>
 
 <template>
-    <div class="resource-registry__page">
+    <div class="projects-registry__page">
         <header>
             <img class="logo" src="../assets/img/rc-logo-1920w.svg" alt="Управление загрузкой ресурсов">
             <div class="header-content__nav">
@@ -27,44 +27,46 @@ export default {
         </header>
         <main>
             <div class="page-main__component page-main__card-component">
-                <h1>{{ resource.fio }}</h1>
-                <div class="resource-registry__card">
+                <h1>{{ project.name }}</h1>
+                <div class="projects-registry__card">
                     <div class="row">
-                        <div class="input-block">
-                            <h2>Табельный номер</h2>
-                            <p>{{ resource.personnelNumber }}</p>
-                        </div>
-                        <div class="input-block">
-                            <h2>Почта</h2>
-                            <p>{{ resource.email }}</p>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-block">
-                            <h2>Должность</h2>
-                            <p>{{ resource.position }}</p>
-                        </div>
-                        <div class="input-block">
-                            <h2>Процент занятости</h2>
-                            <p>{{ resource.busyness }}</p>
+                        <div class="input-block-100">
+                            <h2>Код проекта</h2>
+                            <p>{{ project.projectCode }}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-block-100">
-                            <h2>Роль</h2>
-                            <p>{{ resource.role }}</p>
+                            <h2>Краткое описание</h2>
+                            <p>{{ project.description }}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-block-100">
-                            <h2>Владелец ресурса</h2>
-                            <p>{{ resource.resourceOwner }}</p>
+                            <h2>Менеджер проекта</h2>
+                            <p>{{ project.manager }}</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-block-100">
-                            <h2>Проекты</h2>
-                            <p>{{ resource.projects }}</p>
+                            <h2>Контакты менеджера проекта</h2>
+                            <p>{{ project.managerContacts }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-block">
+                            <h2>Начало проекта</h2>
+                            <p>{{ project.startDate }}</p>
+                        </div>
+                        <div class="input-block">
+                            <h2>Конец проекта</h2>
+                            <p>{{ project.endDate }}</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-block-100">
+                            <h2>Задействованные ресурсы</h2>
+                            <p>{{ project.members }}</p>
                         </div>
                     </div>
                 </div>
@@ -74,34 +76,34 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.resource-registry__card{
+.projects-registry__card {
     width: 70%;
 
-    .row{
+    .row {
         gap: 30px;
     }
 
-    .input-block{
+    .input-block {
         width: 50%;
 
-        h2{
+        h2 {
             padding: 20px 20px 10px 20px;
         }
 
-        p{
+        p {
             background-color: rgba(255, 255, 255, 0.05);
             padding: 10px 20px;
         }
     }
 
-    .input-block-100{
+    .input-block-100 {
         width: 100%;
 
-        h2{
+        h2 {
             padding: 20px 20px 10px 20px;
         }
 
-        p{
+        p {
             background-color: rgba(255, 255, 255, 0.05);
             padding: 10px 20px;
         }

@@ -6,9 +6,13 @@ import CreateResource from '@/views/CreateResource.vue'
 import ViewResource from '@/views/ViewResource.vue'
 import EditResource from '@/views/EditResource.vue'
 import ProjectsRegistry from '@/views/ProjectsRegistry.vue'
+import CreateProject from '@/views/CreateProject.vue'
+import ViewProject from '@/views/ViewProject.vue'
+import EditProject from '@/views/EditProject.vue'
 import CalendarResourcePlan from '@/views/CalendarResourcePlan.vue'
 import RequestJournal from '@/views/RequestJournal.vue'
 import Dashboard from '@/views/Dashboard.vue'
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -47,6 +51,21 @@ const router = createRouter({
       path: '/projects-registry',
       name: 'projects-registry',
       component: ProjectsRegistry
+    },
+    {
+      path: '/projects-registry/create',
+      name: 'projects-registry-create',
+      component: CreateProject
+    },
+    {
+      path: '/projects-registry/:projectId',
+      name: 'project-view',
+      component: ViewProject
+    },
+    {
+      path: '/projects-registry/:projectId/edit',
+      name: 'project-edit',
+      component: EditProject
     },
     {
       path: '/calendar-resource-plan',

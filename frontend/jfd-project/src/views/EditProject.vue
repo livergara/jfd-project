@@ -1,33 +1,33 @@
 <script lang="ts">
 import NavMenu from '@/components/NavigationMenu/NavMenu.vue'
-import ResourceService from '@/services/ResourceService';
+import ProjectsService from '@/services/ProjectsService';
 export default {
     components: {
         NavMenu
     },
     data() {
         return {
-            resource: {
-                fio: null,
-                personnelNumber: null,
-                email: null,
-                position: null,
-                role: null,
-                busyness: null,
-                resourceOwner: null,
-                projects: null,
+            project: {
+                name: null,
+                projectCode: null,
+                description: null,
+                manager: null,
+                managerContacts: null,
+                startDate: null,
+                endDate: null,
+                members: null
             }
         }
     },
     methods: {
         async save() {
-            const resourceId = this.$route.params.resourceId
+            const projectId = this.$route.params.projectId
             try {
-                await ResourceService.put(this.resource)
+                await ProjectsService.put(this.project)
                 this.$router.push({
-                    name: 'resource-view',
+                    name: 'project-view',
                     params: {
-                        resourceId: resourceId
+                        projectId: projectId
                     }
                 })
             } catch (err) {
@@ -37,8 +37,8 @@ export default {
     },
     async mounted() {
         try {
-            const resourceId = this.$route.params.resourceId
-            this.resource = (await ResourceService.show(resourceId)).data
+            const projectId = this.$route.params.projectId
+            this.project = (await ProjectsService.show(projectId)).data
         } catch (err) {
             console.log(err)
         }
@@ -47,7 +47,7 @@ export default {
 </script>
 
 <template>
-    <div class="resource-registry__page">
+    <div class="projects-registry__page">
         <header>
             <img class="logo" src="../assets/img/rc-logo-1920w.svg" alt="Управление загрузкой ресурсов">
             <div class="header-content__nav">
@@ -56,48 +56,48 @@ export default {
         </header>
         <main>
             <div class="page-main__component page-main__card-component">
-                <h1>Изменение карточки ресурса</h1>
-                <div class="resource-registry__card">
+                <h1>Создание карточки ресурса</h1>
+                <div class="projects-registry__card">
                     <div class="row">
                         <div class="input-block">
-                            <label for="fio">ФИО сотрудника</label>
-                            <input id="fio" v-model="resource.fio" />
+                            <label for="name">Название проекта</label>
+                            <input id="name" v-model="project.name" />
                         </div>
                         <div class="input-block">
-                            <label for="personnelNumber">Табельный номер</label>
-                            <input id="personnelNumber" v-model="resource.personnelNumber" />
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="input-block">
-                            <label for="email">Почта</label>
-                            <input id="email" v-model="resource.email" />
-                        </div>
-                        <div class="input-block">
-                            <label for="position">Должность</label>
-                            <input id="position" v-model="resource.position" />
+                            <label for="projectCode">Код проекта</label>
+                            <input id="projectCode" v-model="project.projectCode" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-block-100">
-                            <label for="role">Роль</label>
-                            <input id="role" v-model="resource.role" />
+                            <label for="description">Краткое описание</label>
+                            <input id="description" v-model="project.description" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-block">
-                            <label for="busyness">Процент занятости</label>
-                            <input id="busyness" v-model="resource.busyness" />
+                            <label for="manager">Менеджер проекта</label>
+                            <input id="manager" v-model="project.manager" />
                         </div>
                         <div class="input-block">
-                            <label for="resourceOwner">Владелец ресурса</label>
-                            <input id="resourceOwner" v-model="resource.resourceOwner" />
+                            <label for="managerContacts">Контакты менеджера проекта</label>
+                            <input id="managerContacts" v-model="project.managerContacts" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="input-block">
+                            <label for="startDate">Начало проекта</label>
+                            <input id="startDate" v-model="project.startDate" />
+                        </div>
+                        <div class="input-block">
+                            <label for="endDate">Конец проекта</label>
+                            <input id="endDate" v-model="project.endDate" />
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-block-100">
-                            <label for="projects">Проекты</label>
-                            <input id="projects" v-model="resource.projects" />
+                            <label for="members">Задействованные ресурсы</label>
+                            <input id="members" v-model="project.members" />
                         </div>
                     </div>
                     <div class="button-block">
@@ -112,7 +112,7 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.resource-registry__card {
+.projects-registry__card {
     width: 70%;
 
     .row {

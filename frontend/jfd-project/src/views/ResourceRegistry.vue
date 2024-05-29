@@ -12,12 +12,16 @@ export default defineComponent({
     data() {
         return {
             title: 'Матрица компетенций',
-            resources: null
+            resources: null,
+            showDotMenu: false
         }
     },
     methods: {
-        navigateTo (route) {
+        navigateTo(route) {
             this.$router.push(route)
+        },
+        showDotsMenu() {
+            this.showDotMenu = !this.showDotMenu;
         }
     },
     async mounted() {
@@ -58,18 +62,40 @@ export default defineComponent({
                     </thead>
                     <tbody>
                         <tr v-for="resource in resources" :key="resource.id">
-                            <td><button @click="navigateTo({
-                                name: 'resource-view',
-                                params: {
-                                    resourceId: resource.id
-                                }
-                            })">View</button>
-                            <button @click="navigateTo({
-                                name: 'resource-edit',
-                                params: {
-                                    resourceId: resource.id
-                                }
-                            })">Edit</button></td>
+                            <td>
+                                <div class="dot-menu__block">
+                                    <div @click="showDotsMenu()" class="dot-menu-icon">
+                                        <img src="../assets/icons/dots-menu.svg" alt="">
+                                    </div>
+                                    <!-- @vue-ignore -->
+                                    <div class="dot-menu" :class="this.showDotMenu ? 'open-menu' : 'closed-menu'">
+                                        <div class="dot-menu-content">
+                                            <button @click="navigateTo({
+                                                name: 'resource-view',
+                                                params: {
+                                                    resourceId: resource.id
+                                                }
+                                            })">
+                                                <div class="row">
+                                                    <img src="../assets/icons/viewing.svg" alt="">
+                                                    <p>Просмотр карточки</p>
+                                                </div>
+                                            </button>
+                                            <button @click="navigateTo({
+                                                name: 'resource-edit',
+                                                params: {
+                                                    resourceId: resource.id
+                                                }
+                                            })">
+                                                <div class="row">
+                                                    <img src="../assets/icons/editing.svg" alt="">
+                                                    <p>Изменение карточки</p>
+                                                </div>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </td>
                             <td> {{ resource.fio }}</td>
                             <td> {{ resource.email }}</td>
                             <td> {{ resource.position }}</td>
@@ -84,4 +110,46 @@ export default defineComponent({
     </div>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.dot-menu__block {
+    position: relative;
+
+    .dot-menu-icon {
+        cursor: pointer;
+    }
+
+    .dot-menu-content {
+        background-color: black;
+        border: 1px solid #C7C6BE;
+        border-radius: 5px;
+        padding: 10px;
+        width: 100%;
+
+        button {
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            width: 300px;
+
+            .row {
+                align-items: center;
+                justify-content: space-between;
+            }
+        }
+    }
+}
+
+.open-menu {
+    display: block;
+    padding: 4px 20px;
+    position: absolute;
+    left: 14px;
+    top: 0px;
+    z-index: 1;
+}
+
+.closed-menu {
+    display: none;
+    height: 0;
+}
+</style>

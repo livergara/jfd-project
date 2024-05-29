@@ -1,6 +1,7 @@
 const AuthenticationController = require('./controllers/AuthenticationController')
 const AuthenticationControllerPolicy = require('./policies/AuthenticationControllerPolicy')
 const ResourceController = require('./controllers/ResourceController')
+const ProjectController = require('./controllers/ProjectController')
 
 module.exports = (app) => {
     app.post('/register',
@@ -18,5 +19,14 @@ module.exports = (app) => {
         ResourceController.put)
     app.post('/resources',
         ResourceController.post)
+
+    app.get('/projects',
+        ProjectController.index)
+    app.get('/projects/:projectId',
+        ProjectController.show)
+    app.put('/projects/:projectId',
+        ProjectController.put)
+    app.post('/projects',
+        ProjectController.post)
 
 }
