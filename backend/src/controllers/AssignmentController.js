@@ -33,7 +33,6 @@ module.exports = {
                 data: assignments
             })
         } catch (err) {
-            console.log(err)
             res.status(500).send({
                 error: 'Возникла ошибка при загрузке проекта'
             })
@@ -44,7 +43,6 @@ module.exports = {
             const assignment = await Assignment.create(req.body)
             res.send(assignment)
         } catch (err) {
-            console.log(err)
             res.status(500).send({
                 error: 'Беда'
             })
