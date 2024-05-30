@@ -9,10 +9,6 @@ export default {
    data: () => ({
       navLinks: [
          {
-            text: 'Журнал заявок',
-            path: '/request-journal'
-         },
-         {
             text: 'Календарь',
             path: '/calendar-resource-plan'
          },
@@ -23,10 +19,6 @@ export default {
          {
             text: 'Реестр проектов',
             path: '/projects-registry'
-         },
-         {
-            text: 'Дашборд',
-            path: '/dashboard'
          }
       ]
    })

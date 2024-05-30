@@ -10,16 +10,13 @@ import CreateProject from '@/views/ProjectsRegistry/CreateProject.vue'
 import ViewProject from '@/views/ProjectsRegistry/ViewProject.vue'
 import EditProject from '@/views/ProjectsRegistry/EditProject.vue'
 import CalendarResourcePlan from '@/views/CalendarResourcePlan.vue'
-import RequestJournal from '@/views/RequestJournal.vue'
-import Dashboard from '@/views/Dashboard.vue'
-import AssignmentsRegistry from '@/views/AssignmentsRegistry/AssignmentsRegistry.vue'
 
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
     {
-      path: '/register',
+      path: '/',
       name: 'register',
       component: Register
     },
@@ -69,25 +66,10 @@ const router = createRouter({
       component: EditProject
     },
     {
-      path: '/assignments-registry',
-      name: 'assignments-registry',
-      component: AssignmentsRegistry
-    },
-    {
       path: '/calendar-resource-plan',
       name: 'calendar-resource-plan',
       component: CalendarResourcePlan
     },
-    {
-      path: '/request-journal',
-      name: 'request-journal',
-      component: RequestJournal
-    },
-    {
-      path: '/dashboard',
-      name: 'dashboard',
-      component: Dashboard
-    }
   ]
 })
 

@@ -7,7 +7,13 @@ export default {
     },
     data() {
         return {
-            resource: {} 
+            resource: {}
+        }
+    },
+    methods: {
+        // @ts-ignore
+        navigateTo(route) {
+            this.$router.push(route)
         }
     },
     async mounted() {
@@ -67,6 +73,21 @@ export default {
                             <p>{{ resource.projects }}</p>
                         </div>
                     </div>
+                    <div class="button-block">
+                        <div class="row">
+                            <router-link :to="{ name: 'resource-registry' }">
+                                <button class="button-cancel">Назад</button>
+                            </router-link>
+                            <button class="button-default" @click="navigateTo({
+                                name: 'resource-edit',
+                                params: {
+                                    resourceId: resource.id
+                                }
+                            })">
+                                Редактировать
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -74,36 +95,44 @@ export default {
 </template>
 
 <style lang="scss" scoped>
-.resource-registry__card{
+.resource-registry__card {
     width: 70%;
 
-    .row{
+    .row {
         gap: 30px;
     }
 
-    .input-block{
+    .input-block {
         width: 50%;
 
-        h2{
+        h2 {
             padding: 20px 20px 10px 20px;
         }
 
-        p{
+        p {
             background-color: rgba(255, 255, 255, 0.05);
             padding: 10px 20px;
         }
     }
 
-    .input-block-100{
+    .input-block-100 {
         width: 100%;
 
-        h2{
+        h2 {
             padding: 20px 20px 10px 20px;
         }
 
-        p{
+        p {
             background-color: rgba(255, 255, 255, 0.05);
             padding: 10px 20px;
+        }
+    }
+
+    .button-block {
+        margin-top: 2rem;
+
+        .row {
+            justify-content: flex-end;
         }
     }
 }

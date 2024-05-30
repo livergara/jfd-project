@@ -19,11 +19,19 @@ export default defineComponent(
                     startDate: null,
                     endDate: null,
                     members: null
-                }
+                },
+                error: null,
+                required: (value) => !!value || 'Required.'
             }
         },
         methods: {
             async create() {
+                this.error = null
+                const areAllFieldsFilledIn = Object.keys(this.project).every(key => !!this.project[key])
+                if (!areAllFieldsFilledIn) {
+                    this.error = 'Пожалуйста, заполните все поля'
+                    return
+                }
                 try {
                     await ProjectsService.post(this.project)
                     this.$router.push({
@@ -54,47 +62,52 @@ export default defineComponent(
                     <div class="row">
                         <div class="input-block">
                             <label for="name">Название проекта</label>
-                            <input id="name" v-model="project.name" />
+                            <input id="name" required :rules="[required]" v-model="project.name" autocomplete="off"/>
                         </div>
                         <div class="input-block">
                             <label for="projectCode">Код проекта</label>
-                            <input id="projectCode" v-model="project.projectCode" />
+                            <input id="projectCode" required :rules="[required]" v-model="project.projectCode" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-block-100">
                             <label for="description">Краткое описание</label>
-                            <input id="description" v-model="project.description" />
+                            <input id="description" required :rules="[required]" v-model="project.description" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-block">
                             <label for="manager">Менеджер проекта</label>
-                            <input id="manager" v-model="project.manager" />
+                            <input id="manager" required :rules="[required]" v-model="project.manager" autocomplete="off"/>
                         </div>
                         <div class="input-block">
                             <label for="managerContacts">Контакты менеджера проекта</label>
-                            <input id="managerContacts" v-model="project.managerContacts" />
+                            <input id="managerContacts" required :rules="[required]"
+                                v-model="project.managerContacts" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-block">
                             <label for="startDate">Начало проекта</label>
-                            <input id="startDate" v-model="project.startDate" />
+                            <input id="startDate" required :rules="[required]" v-model="project.startDate" autocomplete="off"/>
                         </div>
                         <div class="input-block">
                             <label for="endDate">Конец проекта</label>
-                            <input id="endDate" v-model="project.endDate" />
+                            <input id="endDate" required :rules="[required]" v-model="project.endDate" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-block-100">
                             <label for="members">Задействованные ресурсы</label>
-                            <input id="members" v-model="project.members" />
+                            <input id="members" required :rules="[required]" v-model="project.members" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="button-block">
                         <div class="row">
+                            <p class="error" v-if="error" style="color: #fff;">{{ error }}</p>
+                            <router-link :to="{ name: 'projects-registry' }">
+                                <button class="button-cancel">Отменить</button>
+                            </router-link>
                             <button class="button-default" @click="create">Создать</button>
                         </div>
                     </div>
@@ -123,13 +136,11 @@ export default defineComponent(
     }
 
     .button-block {
+        margin-top: 2rem;
 
         .row {
+            align-items: center;
             justify-content: flex-end;
-
-            .button-default {
-                margin-top: 2rem;
-            }
         }
     }
 }

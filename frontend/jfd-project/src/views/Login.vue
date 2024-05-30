@@ -18,6 +18,9 @@ export default defineComponent({
                email: this.email,
                password: this.password
             })
+            this.$router.push({
+               name: 'projects-registry'
+            })
          } catch (error) {
             //   @ts-ignore
             this.error = error.response.data.error
@@ -48,9 +51,7 @@ export default defineComponent({
             @click="login"
             >Войти</button>
             <div class="auth__block_trigger">
-               <p>я не робот, я человек</p>
-               <div class="auth__block_trigger__slider">
-               </div>
+               <p>Как славно жить в мире бюрократии</p>
             </div>
          </div>
       </div>

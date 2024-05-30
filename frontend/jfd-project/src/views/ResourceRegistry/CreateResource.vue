@@ -19,11 +19,19 @@ export default defineComponent(
                     busyness: null,
                     resourceOwner: null,
                     projects: null,
-                }
+                },
+                error: null,
+                required: (value) => !!value || 'Required.'
             }
         },
         methods: {
             async create() {
+                this.error = null
+                const areAllFieldsFilledIn = Object.keys(this.resource).every(key => !!this.resource[key])
+                if (!areAllFieldsFilledIn) {
+                    this.error = 'Пожалуйста, заполните все поля'
+                    return
+                }
                 try {
                     await ResourceService.post(this.resource)
                     this.$router.push({
@@ -54,47 +62,52 @@ export default defineComponent(
                     <div class="row">
                         <div class="input-block">
                             <label for="fio">ФИО сотрудника</label>
-                            <input id="fio" v-model="resource.fio" />
+                            <input id="fio" required :rules="[required]" v-model="resource.fio" autocomplete="off" />
                         </div>
                         <div class="input-block">
                             <label for="personnelNumber">Табельный номер</label>
-                            <input id="personnelNumber" v-model="resource.personnelNumber" />
+                            <input id="personnelNumber" required :rules="[required]"
+                                v-model="resource.personnelNumber" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-block">
                             <label for="email">Почта</label>
-                            <input id="email" v-model="resource.email" />
+                            <input id="email" required :rules="[required]" v-model="resource.email" autocomplete="off"/>
                         </div>
                         <div class="input-block">
                             <label for="position">Должность</label>
-                            <input id="position" v-model="resource.position" />
+                            <input id="position" required :rules="[required]" v-model="resource.position" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-block-100">
                             <label for="role">Роль</label>
-                            <input id="role" v-model="resource.role" />
+                            <input id="role" required :rules="[required]" v-model="resource.role" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-block">
                             <label for="busyness">Процент занятости</label>
-                            <input id="busyness" v-model="resource.busyness" />
+                            <input id="busyness" required :rules="[required]" v-model="resource.busyness" autocomplete="off"/>
                         </div>
                         <div class="input-block">
                             <label for="resourceOwner">Владелец ресурса</label>
-                            <input id="resourceOwner" v-model="resource.resourceOwner" />
+                            <input id="resourceOwner" required :rules="[required]" v-model="resource.resourceOwner" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="row">
                         <div class="input-block-100">
                             <label for="projects">Проекты</label>
-                            <input id="projects" v-model="resource.projects" />
+                            <input id="projects" required :rules="[required]" v-model="resource.projects" autocomplete="off"/>
                         </div>
                     </div>
                     <div class="button-block">
                         <div class="row">
+                            <p class="error" v-if="error" style="color: #fff;">{{ error }}</p>
+                            <router-link :to="{ name: 'resource-registry' }">
+                                <button class="button-cancel">Отменить</button>
+                            </router-link>
                             <button class="button-default" @click="create">Создать</button>
                         </div>
                     </div>
@@ -123,13 +136,11 @@ export default defineComponent(
     }
 
     .button-block {
+        margin-top: 2rem;
 
         .row {
+            align-items: center;
             justify-content: flex-end;
-
-            .button-default {
-                margin-top: 2rem;
-            }
         }
     }
 }

@@ -3,7 +3,6 @@ const path = require('path')
 const Sequelize = require('sequelize')
 const config = require('../config/config')
 const db = {}
-const { applyExtraSetup } = require('../extra-setup');
 
 const sequelize = new Sequelize(
     config.db.database,
@@ -22,8 +21,6 @@ fs
         const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes)
         db[model.name] = model
     })
-
-applyExtraSetup(sequelize);
 
 db.sequelize = sequelize
 db.Sequelize = Sequelize

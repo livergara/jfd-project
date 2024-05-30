@@ -9,15 +9,15 @@ export default defineComponent({
     components: {
         NavMenu
     },
-    data () {
+    data() {
         return {
             title: 'Реестр проектов',
-            projects: null as null | {id: number; name: string; projectCode: number, description: string; manager: string; managerContacts: string;}[],
+            projects: null as null | { id: number; name: string; projectCode: number, description: string; manager: string; managerContacts: string; }[],
             showDotMenu: false
         }
     },
     methods: {
-         // @ts-ignore
+        // @ts-ignore
         navigateTo(route) {
             this.$router.push(route)
         },
@@ -63,38 +63,14 @@ export default defineComponent({
                     <tbody>
                         <tr v-for="project in projects" :key="project.id">
                             <td>
-                                <div class="dot-menu__block">
-                                    <div @click="showDotsMenu()" class="dot-menu-icon">
-                                        <img src="../../assets/icons/dots-menu.svg" alt="">
-                                    </div>
-                                    <!-- @vue-ignore -->
-                                    <div class="dot-menu" :class="this.showDotMenu ? 'open-menu' : 'closed-menu'">
-                                        <div class="dot-menu-content">
-                                            <button @click="navigateTo({
-                                                name: 'project-view',
-                                                params: {
-                                                    projectId: project.id
-                                                }
-                                            })">
-                                                <div class="row">
-                                                    <img src="../../assets/icons/viewing.svg" alt="">
-                                                    <p>Просмотр карточки</p>
-                                                </div>
-                                            </button>
-                                            <button @click="navigateTo({
-                                                name: 'project-edit',
-                                                params: {
-                                                    projectId: project.id
-                                                }
-                                            })">
-                                                <div class="row">
-                                                    <img src="../../assets/icons/editing.svg" alt="">
-                                                    <p>Изменение карточки</p>
-                                                </div>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
+                                <button class="button-view" @click="navigateTo({
+                                    name: 'project-view',
+                                    params: {
+                                        projectId: project.id
+                                    }
+                                })">
+                                        <img src="../../assets/icons/viewing.svg" alt="">
+                                </button>
                             </td>
                             <td>{{ project.name }}</td>
                             <td>{{ project.projectCode }}</td>
@@ -110,45 +86,9 @@ export default defineComponent({
 </template>
 
 <style lang="scss" scoped>
-.dot-menu__block {
-    position: relative;
-
-    .dot-menu-icon {
-        cursor: pointer;
-    }
-
-    .dot-menu-content {
-        background-color: black;
-        border: 1px solid #C7C6BE;
-        border-radius: 5px;
-        padding: 10px;
-        width: 100%;
-
-        button {
-            background: transparent;
-            border: none;
-            cursor: pointer;
-            width: 300px;
-
-            .row {
-                align-items: center;
-                justify-content: space-between;
-            }
-        }
-    }
-}
-
-.open-menu {
-    display: block;
-    padding: 4px 20px;
-    position: absolute;
-    left: 14px;
-    top: 0px;
-    z-index: 1;
-}
-
-.closed-menu {
-    display: none;
-    height: 0;
+.button-view {
+    background: transparent;
+    border: none;
+    cursor: pointer;
 }
 </style>

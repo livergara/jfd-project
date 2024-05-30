@@ -31,20 +31,6 @@ export default {
                     </router-link>
                 </li>
             </ul>
-            <ul>
-                <li>
-                    <button class="nav-content-desk">
-                        <img src="../../assets/icons/notifications-default.svg" alt="Уведомления">
-                    </button>
-                    <p class="nav-content-mob">Уведомления</p>
-                </li>
-                <li>
-                    <button class="nav-content-desk">
-                        <img src="../../assets/icons/wiki-default.svg" alt="Вики">
-                    </button>
-                    <p class="nav-content-mob">Обучение</p>
-                </li>
-            </ul>
         </div>
     </div>
 </template>
@@ -80,11 +66,12 @@ export default {
     .open-menu {
         background: linear-gradient(27deg, rgba(0, 0, 0, 1) 0%, rgba(0, 0, 0, 1) 55%, rgba(41, 41, 41, 1) 100%);
         display: block;
+        height: 100vh;
         padding: 90px 70px;
         position: absolute;
         right: 0px;
         top: 0px;
-        z-index: 1;
+        z-index: 20;
     }
 
     .closed-menu {
@@ -107,7 +94,7 @@ export default {
         display: block;
         position: relative;
         text-align: right;
-        z-index: 10;
+        z-index: 25;
     }
 
     .nav-content-desk {

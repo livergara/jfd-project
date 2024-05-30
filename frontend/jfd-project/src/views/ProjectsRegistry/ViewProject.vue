@@ -10,6 +10,12 @@ export default {
             project: {}
         }
     },
+    methods: {
+        // @ts-ignore
+        navigateTo(route) {
+            this.$router.push(route)
+        }
+    },
     async mounted() {
         const projectId = this.$route.params.projectId
         this.project = (await ProjectsService.show(projectId)).data
@@ -69,6 +75,21 @@ export default {
                             <p>{{ project.members }}</p>
                         </div>
                     </div>
+                    <div class="button-block">
+                        <div class="row">
+                            <router-link :to="{ name: 'projects-registry' }">
+                                <button class="button-cancel">Назад</button>
+                            </router-link>
+                            <button class="button-default" @click="navigateTo({
+                                name: 'project-edit',
+                                params: {
+                                    projectId: project.id
+                                }
+                            })">
+                                Редактировать
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -92,6 +113,7 @@ export default {
 
         p {
             background-color: rgba(255, 255, 255, 0.05);
+            line-height: 2rem;
             padding: 10px 20px;
         }
     }
@@ -105,8 +127,18 @@ export default {
 
         p {
             background-color: rgba(255, 255, 255, 0.05);
+            line-height: 2rem;
             padding: 10px 20px;
         }
     }
+
+    .button-block {
+        margin-top: 2rem;
+
+        .row {
+            justify-content: flex-end;
+        }
+    }
+
 }
 </style>

@@ -1,0 +1,9 @@
+FROM node:alpine AS build
+WORKDIR /frontend/jfd-project
+COPY package.json .
+EXPOSE 5173
+RUN npm install
+COPY . .
+RUN npm run build
+
+CMD ["npm", "run", "start"]

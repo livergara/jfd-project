@@ -5,13 +5,10 @@ module.exports = (sequelize, DataTypes) => {
         description: DataTypes.TEXT,
         manager: DataTypes.STRING,
         managerContacts: DataTypes.STRING,
-        startDate: DataTypes.DATE,
-        endDate: DataTypes.DATE,
+        startDate: DataTypes.DATEONLY,
+        endDate: DataTypes.DATEONLY,
         members: DataTypes.STRING,
     })
-
-    Project.associate = function (models) {
-    }
 
     return Project
 }
